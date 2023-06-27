@@ -10,7 +10,7 @@ def is_number(token):
 #max_len:최대 길이를 제한하기 위한 값, vocab_size : 단어 사전의 크기를 제한하기 위한 값
 #maxlen보다 긴 문장은 제외하고 단어별 빈도수 세어, 빈도수가 높은 단어부터 정렬해 vocab 사전 생성
 def create_vocab(domain, maxlen=0, vocab_size=0):
-    assert domain in {'hotel','restaurant'}
+    assert domain in {'hotel','food'}
     source = '../preprocessed_data/'+domain+'/train.txt'
 
     total_words, unique_words = 0, 0
@@ -63,7 +63,7 @@ def create_vocab(domain, maxlen=0, vocab_size=0):
 #숫자는 <num>, vocab에 없는 단어는 <unk>로 대체한 후 이를 리스트로 저장.  
 
 def read_dataset(domain, phase, vocab, maxlen):
-    assert domain in {'hotel','restaurant'}#'restaurant', 'beer'
+    assert domain in {'hotel','food'}#'restaurant', 'beer'
     assert phase in {'train', 'test'}
     
     source = '../preprocessed_data/'+domain+'/'+phase+'.txt'

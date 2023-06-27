@@ -13,7 +13,7 @@ parser.add_argument("-o", "--out-dir", dest="out_dir_path", type=str, metavar='<
 parser.add_argument("-e", "--embdim", dest="emb_dim", type=int, metavar='<int>', default=200, help="Embeddings dimension (default=200)")
 parser.add_argument("-b", "--batch-size", dest="batch_size", type=int, metavar='<int>', default=50, help="Batch size (default=50)")
 parser.add_argument("-v", "--vocab-size", dest="vocab_size", type=int, metavar='<int>', default=9000, help="Vocab size. '0' means no limit (default=9000)")
-parser.add_argument("-as", "--aspect-size", dest="aspect_size", type=int, metavar='<int>', default=12, help="The number of aspects specified by users (default=14)")
+parser.add_argument("-as", "--aspect-size", dest="aspect_size", type=int, metavar='<int>', default=15, help="The number of aspects specified by users (default=14)")
 parser.add_argument("--emb", dest="emb_path", type=str, metavar='<str>', help="The path to the word embeddings file")
 parser.add_argument("--epochs", dest="epochs", type=int, metavar='<int>', default=15, help="Number of epochs (default=15)")
 parser.add_argument("-n", "--neg-size", dest="neg_size", type=int, metavar='<int>', default=20, help="Number of negative instances (default=20)")
@@ -77,7 +77,7 @@ def evaluation(true, predict, domain):
             true_label.append(line.strip())
 
         print(classification_report(true_label, predict_label, 
-            ['룸','위치','부대시설','서비스','목적'], digits=3))
+            ['룸','위치','가성비','목적','부대시설','서비스'], digits=3))
         
 
         #predict_label과 true_label 파일을 저장하는 코드
@@ -160,9 +160,9 @@ for c in range(len(test_x)):
 
 # map for the pre-trained restaurant model (under pre_trained_model/restaurant)
 
-cluster_map = {0: '룸', 1: '기타', 2: '서비스', 3: '목적',
-            4: '룸', 5: '가성비', 6:'룸',  7: '룸', 8: '룸', 
-            9: '서비스',10:'부대시설',11:'서비스'}
+cluster_map = {0: '가성비', 1: '위치', 2: '룸', 3: '서비스',
+            4: '룸', 5: '기타', 6:'목적', 7: '위치', 8: '서비스', 
+            9: '룸',10:'부대시설',11:'서비스',12:'룸',13:'룸',14:'룸'}
 
 
 print( '--- Results on %s domain ---' % (args.domain))

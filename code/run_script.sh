@@ -12,6 +12,7 @@ THEANO_FLAGS="device=gpu0,floatX=float32" python train.py \
 
 python train.py --emb "../preprocessed_data/hotel/w2v_embedding" --domain "hotel" -o "output_dir"
 
+python train.py --emb "../preprocessed_data/food/w2v_embedding" --domain "food" -o "output_dir"
 
 
 #test
